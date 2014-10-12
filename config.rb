@@ -73,5 +73,6 @@ end
 
 activate :deploy do |deploy|
   deploy.method = :git
+  deploy.remote = 'build'
   deploy.branch = 'master'
 end
