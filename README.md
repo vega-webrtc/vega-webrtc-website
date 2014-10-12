@@ -20,3 +20,9 @@ Add the `build` remote:
 ```sh
 $ git remote add build git@github.com:vega-webrtc/vega-webrtc.github.io.git
 ```
+
+Then after you deploy:
+
+```sh
+$ cd build && git remote add build git@github.com:vega-webrtc/vega-webrtc.github.io.git
+```
