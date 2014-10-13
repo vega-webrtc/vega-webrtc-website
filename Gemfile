@@ -16,6 +16,6 @@ gem "tzinfo-data", platforms: [:mswin, :mingw]
 
 # styles
 # http://bourbon.io/
-gem 'bourbon', '~> 4.0'
+gem 'middleman-bourbon', '~> 0.0.2'
 gem 'neat', '~> 1.6'
 gem 'bitters', '~> 0.10'

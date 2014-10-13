@@ -76,3 +76,5 @@ activate :deploy do |deploy|
   deploy.remote = 'build'
   deploy.branch = 'master'
 end
+
+activate :bourbon
