@@ -1,9 +1,9 @@
 .hero {
   $hero-background-top: darken($base-accent-color, 25); 
   $hero-background-bottom: adjust-hue($hero-background-top, -70);
-  $hero-color: white;
+  $hero-color: #E7F1EC;
   $gradient-angle: 10deg;
-  $hero-image: 'https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png';
+  $hero-image: 'http://upload.wikimedia.org/wikipedia/commons/e/ee/Vega_star.png';
 
   @include background(url($hero-image), linear-gradient($gradient-angle, $hero-background-bottom, $hero-background-top), no-repeat $hero-background-top scroll);
 
