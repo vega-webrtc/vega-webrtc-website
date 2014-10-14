@@ -29,7 +29,6 @@
       h1 {
         font-size: 2.5em;
         margin-bottom: .5em;
-        font-family: $serif;
 
         @include media($large-screen) {
           font-size: 3em;
@@ -37,7 +36,7 @@
       }
     }
 
-    button {
+    .button {
       @include button(simple, $base-background-color);
       font-size: $base-font-size;
       outline: none;

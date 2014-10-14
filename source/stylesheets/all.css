@@ -254,12 +254,11 @@ input[type="submit"] {
       clear: both; }
     .hero .hero-inner .hero-name h1 {
       font-size: 2.5em;
-      margin-bottom: .5em;
-      font-family: Georgia, Cambria, "Times New Roman", Times, serif; }
+      margin-bottom: .5em; }
       @media screen and (min-width: 53.75em) {
         .hero .hero-inner .hero-name h1 {
           font-size: 3em; } }
-    .hero .hero-inner button {
+    .hero .hero-inner .button {
       border: 1px solid #dbdbdb;
       border-radius: 3px;
       box-shadow: inset 0 1px 0 0 white;
@@ -290,25 +289,25 @@ input[type="submit"] {
       background-clip: padding-box;
       font-size: 1em;
       outline: none; }
-      .hero .hero-inner button:hover:not(:disabled) {
+      .hero .hero-inner .button:hover:not(:disabled) {
         box-shadow: inset 0 1px 0 0 white;
         cursor: pointer;
         background-color: #f2f2f2;
         background-image: -webkit-linear-gradient(#f2f2f2, #dbdbdb);
         background-image: linear-gradient(#f2f2f2, #dbdbdb); }
-      .hero .hero-inner button:active:not(:disabled), .hero .hero-inner button:focus:not(:disabled) {
+      .hero .hero-inner .button:active:not(:disabled), .hero .hero-inner .button:focus:not(:disabled) {
         border: 1px solid #dbdbdb;
         box-shadow: inset 0 0 8px 4px #d4d4d4, inset 0 0 8px 4px #d4d4d4; }
-      .hero .hero-inner button:hover:not(:disabled) {
+      .hero .hero-inner .button:hover:not(:disabled) {
         box-shadow: inset 0 1px 0 0 white;
         cursor: pointer;
         background-color: #f2f2f2;
         background-image: -webkit-linear-gradient(#f2f2f2, #ded8d8);
         background-image: linear-gradient(#f2f2f2, #ded8d8); }
-      .hero .hero-inner button:active:not(:disabled), .hero .hero-inner button:focus:not(:disabled) {
+      .hero .hero-inner .button:active:not(:disabled), .hero .hero-inner .button:focus:not(:disabled) {
         border: 1px solid #dfd8d8;
         box-shadow: inset 0 0 8px 4px #d7d1d1, inset 0 0 8px 4px #d7d1d1; }
-      .hero .hero-inner button:disabled {
+      .hero .hero-inner .button:disabled {
         opacity: 0.5;
         cursor: not-allowed; }
     .hero .hero-inner .hero-copy {
