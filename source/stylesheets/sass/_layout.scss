@@ -274,7 +274,7 @@
     margin-bottom: $base-spacing;
 
     @include media($medium-screen) {
-      @include shift(3);
+      @include shift(2);
     }
   }
 
@@ -292,7 +292,7 @@
     text-align: center;
 
     @include media($medium-screen) {
-      text-align: left;
+      text-align: center;
     }
   }
 
