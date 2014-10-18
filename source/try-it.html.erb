@@ -10,6 +10,7 @@
     <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
     <li><a href="http://bundler.io/">Bundler</a></li>
     <li><a href="http://middlemanapp.com/">Middleman</a></li>
+    <li>Connection to a router</li>
     <li>Chrome or Firefox</li>
   </ul>
   <hr>
@@ -78,7 +79,7 @@
   <pre>
     # source/index.html.erb
 
-    &#60;video id="me" muted autoplay&#62;&#60;/video&#62;
+    &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
   </pre>
 
   <p>Finally, let's use Vega Prime to get our video in there.</p>
@@ -86,7 +87,7 @@
   <pre>
     # source/index.html.erb
 
-    &#60;video id="me" muted autoplay&#62;&#60;/video&#62;
+    &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
 
     &#60;script&#62;
       new VegaPrime({
@@ -108,10 +109,104 @@
   <p>
     Now we need to display peers when they arrive, and remove them when they go away.
   </p>
+
+  <p>
+    First, let's create a little space for our friends to go.
+  </p>
+
+  <pre>
+    # source/index.html.erb
+
+    &#60;div id="peers"&#62;&#60;/div&#62;
+
+    &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
+
+    &#60;script&#62;
+      new VegaPrime({
+        url: 'ws://localhost:9292', 
+        badge: {},
+        roomId: '/fun',
+      }).onLocalStreamReceived(function(wrappedStream){
+        $('video#me').attr('src', wrappedStream.url);
+      })
+    &#60;/script&#62;
+  </pre>
+
+  <p>
+    Now, let's add our friends to the page when Vega Prime detects them.
+  </p>
+
+  <pre>
+    # source/index.html.erb
+
+    &#60;div id="peers"&#62;&#60;/div&#62;
+
+    &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
+
+    &#60;script&#62;
+      new VegaPrime({
+        url: 'ws://localhost:9292', 
+        badge: {},
+        roomId: '/fun',
+      }).onLocalStreamReceived(function(wrappedStream){
+        $('video#me').attr('src', wrappedStream.url);
+      }).onStreamAdded(function(peer){
+        $video = $('&#60;video autoplay style="width: 50%;"&#62');
+        $video.attr('src', peer.streamUrl);
+        $video.attr('data-peer-id', peer.peerId);
+
+        $('#peers').append($video)
+      })
+    &#60;/script&#62;
+  </pre>
+
+  <p>
+    Now refresh your browser. Then open up localhost:4500 in another tab. In both tabs, you should see a bigger
+    version of yourself above yourself. That's you, but <em>through a
+    peer-to-peer connection</em> going <em>through the internet</em>! Pretty
+    cool, huh? Go ahead, open up localhost:4500 in yet another tab. AHH another big version of you.
+    Multiple peer connections for free. WEEEEEE!
+  </p>
+
+  <p>There's one more thing we have to do. We have to remove our friends when they go away. (<em>single tear</em>)</p>
+
+  <pre>
+    # source/index.html.erb
+
+    &#60;div id="peers"&#62;&#60;/div&#62;
+
+    &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
+
+    &#60;script&#62;
+      new VegaPrime({
+        url: 'ws://localhost:9292', 
+        badge: {},
+        roomId: '/fun',
+      }).onLocalStreamReceived(function(wrappedStream){
+        $('video#me').attr('src', wrappedStream.url);
+      }).onStreamAdded(function(peer){
+        $video = $('&#60;video autoplay style="width: 50%;"&#62');
+        $video.attr('src', peer.streamUrl);
+        $video.attr('data-peer-id', peer.peerId);
+
+        $('#peers').append($video)
+      }).onPeerRemoved(function(peer){
+        $('video[data-peer-id="' + peer.peerId + '"]').remove()
+      })
+    &#60;/script&#62;
+  </pre>
+
+  <p>
+    Now if you open up the middleman app in multiple tabs, and you close out one,
+    you should see only as many versions of you as there are middleman tabs going.
+  </p>
+
   <h3>Step 4: Profit?</h3>
   <p>
-    Congratulations, you've made a video chat application! Given the APIs
-    above, you have a good idea of where you can take your own video
-    application.
+    Congratulations, you've made a very crude video chat application! Given the
+    APIs above, you have a good idea of where you can take your own video
+    application. Check out the guides for more on how to make your Vega Server
+    secure, how to handle errors in Vega Prime, and how the whole thing works
+    under the hood.
   </p>
 </article>
