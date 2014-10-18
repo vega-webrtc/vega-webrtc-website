@@ -66,6 +66,44 @@
     Surf over to <code>localhost:4500</code> in your browser and you should see a blank, gray screen.
   </p>
 
+  <p>Now include the Vega Prime bundle and JQueryin your javascript source code with <code>wget</code>.</p>
+
+  <pre>
+    $ wget https://raw.githubusercontent.com/vega-webrtc/vega-prime/master/vega-prime.bundle.js -O source/javascripts/vega-prime.bundle.js
+    $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source/javascripts/jquery.min.js
+  </pre>
+
+  <p>Let's setup our index.html.erb file to have a video tag for our camera.</p>
+
+  <pre>
+    # source/index.html.erb
+
+    &#60;video id="me" muted autoplay&#62;&#60;/video&#62;
+  </pre>
+
+  <p>Finally, let's use Vega Prime to get our video in there.</p>
+
+  <pre>
+    # source/index.html.erb
+
+    &#60;video id="me" muted autoplay&#62;&#60;/video&#62;
+
+    &#60;script&#62;
+      new VegaPrime({
+        url: 'ws://localhost:9292', 
+        badge: {},
+        roomId: '/fun',
+      }).onLocalStreamReceived(function(wrappedStream){
+        $('video#me').attr('src', wrappedStream.url);
+      })
+    &#60;/script&#62;
+  </pre>
+
+  <p>
+    Then allow the browser to access your camera and microphone, and you should
+    see yourself pointed right back at ya!
+  </p>
+
   <h3>Step 3: Handle your peers</h3>
   <p>
     Now we need to display peers when they arrive, and remove them when they go away.
