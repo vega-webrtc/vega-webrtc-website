@@ -9,6 +9,8 @@
   <ul>
     <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
     <li><a href="http://bundler.io/">Bundler</a></li>
+    <li><a href="http://middlemanapp.com/">Middleman</a></li>
+    <li>Chrome or Firefox</li>
   </ul>
   <hr>
   <h3>Step 1: Boot a Vega Server</h3>
@@ -20,28 +22,26 @@
       <p>First clone the vega server example repo:</p>
 
       <p>
-        <code>
+        <pre>
           $ git clone git@github.com:vega-webrtc/vega_server_ruby_example.git && cd vega_server_ruby_example
-        </code>
+        </pre>
       </p>
     </li>
     <li>
       <p>Then, install the dependencies:</p>
 
       <p>
-        <code>
+        <pre>
           $ bundle install
-        </code>
+        </pre>
       <p>
     </li>
     <li>
       <p>Finally, run the server:</p>
 
-      <p>
-        <code>
-          $ bundle exec puma example.ru -p 9292
-        </code>
-      <p>
+      <pre>
+        $ bundle exec puma example.ru -p 9292
+      </pre>
     </li>
   </ol>
   <h3>Step 2: Show your local video</h3>
@@ -49,8 +49,23 @@
     Now we can move to the browser. Let's get the user media and display it if
     the user allows their stream to be shared.
   </p>
+
   <p>
+    We need a local server to serve our video application. We'll init a
+    Middleman app, clear out the predefined index.html.erb file, and serve up
+    the app.
   </p>
+  <pre>
+    $ middleman init video-chat
+    $ cd video-chat
+    $ echo "" > source/index.html.erb
+    $ middleman server -p 4500
+  </pre>
+
+  <p>
+    Surf over to <code>localhost:4500</code> in your browser and you should see a blank, gray screen.
+  </p>
+
   <h3>Step 3: Handle your peers</h3>
   <p>
     Now we need to display peers when they arrive, and remove them when they go away.
