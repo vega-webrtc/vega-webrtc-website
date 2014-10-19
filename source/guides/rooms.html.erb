@@ -1,0 +1,23 @@
+<p class="type">room IDs</p>
+
+<h1>Introduction</h1>
+
+<h2>
+  Room IDs are how your peers get into the same room. What follows is an
+  introduction to room ids and some patterns for getting people into the
+  same room.
+</h2>
+
+<p>
+  Peers get into the same room if they pass the same <code>roomId</code> into
+  the Vega Prime constructor.
+</p>
+
+<pre>
+<code class="language-javascript">new VegaPrime({
+  url: 'wss://my-secure-vega-server',
+  roomId: 'abc123',
+  badge: {}
+});
+</code>
+</pre>
