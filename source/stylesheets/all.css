@@ -374,6 +374,8 @@ div.guide-wrapper {
   margin-right: 0; }
   div.guide-wrapper:last-child {
     margin-right: 0; }
+  div.guide-wrapper .type-system-sans {
+    width: 80%; }
 
 .centered-navigation {
   background-color: #5c769b;
