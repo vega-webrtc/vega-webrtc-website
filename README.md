@@ -9,15 +9,21 @@ The built source for the deployed site is
 
 ## Developing
 
-```sh
-$ foreman start
-```
-
 Don't have [foreman](https://github.com/ddollar/foreman)?
 
 ```sh
 $ gem install foreman
 ```
+
+Run the server and watch sass:
+
+```sh
+$ foreman start
+```
+
+Source is in /source.
+
+Thanks!
 
 ## Deploy
 
