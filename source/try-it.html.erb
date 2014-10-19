@@ -39,7 +39,9 @@
 
       <p>
         <pre>
-          $ git clone git@github.com:vega-webrtc/vega_server_ruby_example.git && cd vega_server_ruby_example
+          <code>
+            $ git clone git@github.com:vega-webrtc/vega_server_ruby_example.git && cd vega_server_ruby_example
+          </code>
         </pre>
       </p>
     </li>
@@ -48,7 +50,7 @@
 
       <p>
         <pre>
-          $ bundle install
+          <code>$ bundle install</code>
         </pre>
       <p>
     </li>
@@ -56,7 +58,7 @@
       <p>Finally, run the server:</p>
 
       <pre>
-        $ bundle exec puma example.ru -p 9292
+        <code>$ bundle exec puma example.ru -p 9292</code>
       </pre>
     </li>
   </ol>
@@ -73,10 +75,12 @@
     the app.
   </p>
   <pre>
-    $ middleman init video-chat
-    $ cd video-chat
-    $ echo "" > source/index.html.erb
-    $ middleman server -p 4500
+    <code>
+      $ middleman init video-chat
+      $ cd video-chat
+      $ echo "" > source/index.html.erb
+      $ middleman server -p 4500
+    </code>
   </pre>
 
   <p>
@@ -86,8 +90,10 @@
   <p>Now include the Vega Prime bundle and JQueryin your javascript source code with <code>wget</code>.</p>
 
   <pre>
-    $ wget https://raw.githubusercontent.com/vega-webrtc/vega-prime/master/vega-prime.bundle.js -O source/javascripts/vega-prime.bundle.js
-    $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source/javascripts/jquery.min.js
+    <code>
+      $ wget https://raw.githubusercontent.com/vega-webrtc/vega-prime/master/vega-prime.bundle.js -O source/javascripts/vega-prime.bundle.js
+      $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source/javascripts/jquery.min.js
+    </code>
   </pre>
 
   <h2>Step 3: Show your local video</h2>
@@ -95,27 +101,31 @@
   <p>Let's setup our index.html.erb file to have a video tag for our camera.</p>
 
   <pre>
-    # source/index.html.erb
+    <code>
+      # source/index.html.erb
 
-    &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
+      &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
+    </code>
   </pre>
 
   <p>Finally, let's use Vega Prime to get our video in there.</p>
 
   <pre>
-    # source/index.html.erb
+    <code>
+      # source/index.html.erb
 
-    &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
+      &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
 
-    &#60;script&#62;
-      new VegaPrime({
-        url: 'ws://localhost:9292', 
-        badge: {},
-        roomId: '/fun',
-      }).onLocalStreamReceived(function(wrappedStream){
-        $('video#me').attr('src', wrappedStream.url);
-      })
-    &#60;/script&#62;
+      &#60;script&#62;
+        new VegaPrime({
+          url: 'ws://localhost:9292', 
+          badge: {},
+          roomId: '/fun',
+        }).onLocalStreamReceived(function(wrappedStream){
+          $('video#me').attr('src', wrappedStream.url);
+        })
+      &#60;/script&#62;
+    </code>
   </pre>
 
   <p>
@@ -133,21 +143,23 @@
   </p>
 
   <pre>
-    # source/index.html.erb
+    <code>
+      # source/index.html.erb
 
-    &#60;div id="peers"&#62;&#60;/div&#62;
+      &#60;div id="peers"&#62;&#60;/div&#62;
 
-    &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
+      &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
 
-    &#60;script&#62;
-      new VegaPrime({
-        url: 'ws://localhost:9292', 
-        badge: {},
-        roomId: '/fun',
-      }).onLocalStreamReceived(function(wrappedStream){
-        $('video#me').attr('src', wrappedStream.url);
-      })
-    &#60;/script&#62;
+      &#60;script&#62;
+        new VegaPrime({
+          url: 'ws://localhost:9292', 
+          badge: {},
+          roomId: '/fun',
+        }).onLocalStreamReceived(function(wrappedStream){
+          $('video#me').attr('src', wrappedStream.url);
+        })
+      &#60;/script&#62;
+    </code>
   </pre>
 
   <p>
@@ -155,27 +167,29 @@
   </p>
 
   <pre>
-    # source/index.html.erb
+    <code>
+      # source/index.html.erb
 
-    &#60;div id="peers"&#62;&#60;/div&#62;
+      &#60;div id="peers"&#62;&#60;/div&#62;
 
-    &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
+      &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
 
-    &#60;script&#62;
-      new VegaPrime({
-        url: 'ws://localhost:9292', 
-        badge: {},
-        roomId: '/fun',
-      }).onLocalStreamReceived(function(wrappedStream){
-        $('video#me').attr('src', wrappedStream.url);
-      }).onStreamAdded(function(peer){
-        $video = $('&#60;video autoplay style="width: 50%;"&#62');
-        $video.attr('src', peer.streamUrl);
-        $video.attr('data-peer-id', peer.peerId);
+      &#60;script&#62;
+        new VegaPrime({
+          url: 'ws://localhost:9292', 
+          badge: {},
+          roomId: '/fun',
+        }).onLocalStreamReceived(function(wrappedStream){
+          $('video#me').attr('src', wrappedStream.url);
+        }).onStreamAdded(function(peer){
+          $video = $('&#60;video autoplay style="width: 50%;"&#62');
+          $video.attr('src', peer.streamUrl);
+          $video.attr('data-peer-id', peer.peerId);
 
-        $('#peers').append($video)
-      })
-    &#60;/script&#62;
+          $('#peers').append($video)
+        })
+      &#60;/script&#62;
+    </code>
   </pre>
 
   <p>
@@ -189,29 +203,31 @@
   <p>There's one more thing we have to do. We have to remove our friends when they go away. (<em>single tear</em>)</p>
 
   <pre>
-    # source/index.html.erb
+    <code>
+      # source/index.html.erb
 
-    &#60;div id="peers"&#62;&#60;/div&#62;
+      &#60;div id="peers"&#62;&#60;/div&#62;
 
-    &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
+      &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
 
-    &#60;script&#62;
-      new VegaPrime({
-        url: 'ws://localhost:9292', 
-        badge: {},
-        roomId: '/fun',
-      }).onLocalStreamReceived(function(wrappedStream){
-        $('video#me').attr('src', wrappedStream.url);
-      }).onStreamAdded(function(peer){
-        $video = $('&#60;video autoplay style="width: 50%;"&#62');
-        $video.attr('src', peer.streamUrl);
-        $video.attr('data-peer-id', peer.peerId);
+      &#60;script&#62;
+        new VegaPrime({
+          url: 'ws://localhost:9292', 
+          badge: {},
+          roomId: '/fun',
+        }).onLocalStreamReceived(function(wrappedStream){
+          $('video#me').attr('src', wrappedStream.url);
+        }).onStreamAdded(function(peer){
+          $video = $('&#60;video autoplay style="width: 50%;"&#62');
+          $video.attr('src', peer.streamUrl);
+          $video.attr('data-peer-id', peer.peerId);
 
-        $('#peers').append($video)
-      }).onPeerRemoved(function(peer){
-        $('video[data-peer-id="' + peer.peerId + '"]').remove()
-      })
-    &#60;/script&#62;
+          $('#peers').append($video)
+        }).onPeerRemoved(function(peer){
+          $('video[data-peer-id="' + peer.peerId + '"]').remove()
+        })
+      &#60;/script&#62;
+    </code>
   </pre>
 
   <p>
