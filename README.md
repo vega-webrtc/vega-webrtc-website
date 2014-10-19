@@ -7,6 +7,18 @@ It's built with [Middleman](http://middlemanapp.com/).
 The built source for the deployed site is
 [here](https://github.com/vega-webrtc/vega-webrtc.github.io).
 
+## Developing
+
+```sh
+$ foreman start
+```
+
+Don't have [foreman](https://github.com/ddollar/foreman)?
+
+```sh
+$ gem install foreman
+```
+
 ## Deploy
 
 ```sh
