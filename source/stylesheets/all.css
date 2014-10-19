@@ -254,6 +254,23 @@ input[type="submit"] {
     display: block;
     padding-bottom: 0; }
 
+div.guides-accordian {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%; }
+  div.guides-accordian:last-child {
+    margin-right: 0; }
+
+div.guide-wrapper {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 74.41059%;
+  margin-right: 0; }
+  div.guide-wrapper:last-child {
+    margin-right: 0; }
+
 .centered-navigation {
   background-color: #5c769b;
   border-bottom: 1px solid #516888;

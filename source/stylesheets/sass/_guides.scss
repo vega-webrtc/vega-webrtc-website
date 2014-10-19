@@ -1,0 +1,8 @@
+div.guides-accordian {
+  @include span-columns(3);
+}
+
+div.guide-wrapper {
+  @include span-columns(9);
+  @include omega();
+}
