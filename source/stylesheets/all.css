@@ -538,7 +538,7 @@ article.type-system-sans {
     @media screen and (min-width: 40em) {
       article.type-system-sans h2 {
         font-size: 1.4em; } }
-  article.type-system-sans code {
+  article.type-system-sans pre {
     font-family: monaco;
     background: #F7F7F7;
     border: 1px solid #E0E0E0;
