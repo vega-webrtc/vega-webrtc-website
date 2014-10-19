@@ -3,17 +3,31 @@
 
   <h1>Make a video chat app in 5 minutes!</h1>
 
-  <h2>Dependencies</h2>
+  <h2>Introduction</h2>
 
-  <p>You'll need:</p>
-  <ul>
-    <li><a href="http://git-scm.com/">Git</a></li>
-    <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
-    <li><a href="http://bundler.io/">Bundler</a></li>
-    <li><a href="http://middlemanapp.com/">Middleman</a></li>
-    <li>Internet connectivity</li>
-    <li>WebRTC compliant browser (Chrome or Firefox)</li>
-  </ul>
+  <p>For this, you'll need:</p>
+
+  <p>
+    <ul>
+      <li><a href="http://git-scm.com/">Git</a></li>
+      <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
+      <li><a href="http://bundler.io/">Bundler</a></li>
+      <li><a href="http://middlemanapp.com/">Middleman</a></li>
+      <li>Internet connectivity</li>
+      <li>WebRTC compliant browser (Chrome or Firefox)</li>
+    </ul>
+  </p>
+
+  <p>
+    We'll make our video chat application in four steps:
+    <ol>
+      <li>Step 1: Start a Vega Server</li>
+      <li>Step 2: Initiate a Middleman app</li>
+      <li>Step 3: Show your local video</li>
+      <li>Step 4: Handle your peers</li>
+    </ol>
+  </p>
+
   <hr>
   <h2>Step 1: Start a Vega Server</h2>
   <p>
@@ -46,12 +60,13 @@
       </pre>
     </li>
   </ol>
-  <h2>Step 2: Show your local video</h2>
+
   <p>
     Now we can move to the browser. Let's get the user media and display it if
     the user allows their stream to be shared.
   </p>
 
+  <h2>Step 2: Initiate a Middleman app</h2>
   <p>
     We need a local server to serve our video application. We'll init a
     Middleman app, clear out the predefined index.html.erb file, and serve up
@@ -74,6 +89,8 @@
     $ wget https://raw.githubusercontent.com/vega-webrtc/vega-prime/master/vega-prime.bundle.js -O source/javascripts/vega-prime.bundle.js
     $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source/javascripts/jquery.min.js
   </pre>
+
+  <h2>Step 3: Show your local video</h2>
 
   <p>Let's setup our index.html.erb file to have a video tag for our camera.</p>
 
