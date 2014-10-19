@@ -10,7 +10,7 @@ The built source for the deployed site is
 ## Deploy
 
 ```sh
-$ middleman deploy --build-before
+$ bin/deploy
 ```
 
 ### Deploying for the first time
