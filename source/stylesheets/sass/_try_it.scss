@@ -104,4 +104,8 @@ article.type-system-sans {
   pre[class*="language-"] {
     padding: 1.25em 1em 0;
   }
+
+  code.old-code {
+    color: lighten(gray, 25);
+  }
 }

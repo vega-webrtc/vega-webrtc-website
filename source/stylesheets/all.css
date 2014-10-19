@@ -582,5 +582,7 @@ article.type-system-sans {
     font-style: italic; }
   article.type-system-sans pre[class*="language-"] {
     padding: 1.25em 1em 0; }
+  article.type-system-sans code.old-code {
+    color: silver; }
 
 /*# sourceMappingURL=all.css.map */

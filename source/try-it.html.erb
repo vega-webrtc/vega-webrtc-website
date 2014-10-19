@@ -26,8 +26,8 @@
     <ol>
       <li>Step 1: Start a Vega Server</li>
       <li>Step 2: Initiate a Middleman app</li>
-      <li>Step 3: Show your local video</li>
-      <li>Step 4: Handle your peers</li>
+      <li>Step 3: Display your camera</li>
+      <li>Step 4: Display and remove your peers</li>
     </ol>
   </p>
 
@@ -38,7 +38,7 @@
   </p>
   <ol>
     <li>
-      <p>First clone the vega server example repo from the terminal:</p>
+      <p>Clone the vega server example repo from the terminal:</p>
 
       <p>
         <pre>
@@ -68,31 +68,27 @@
   <p>
     We need a local server to serve our video application. Middleman will
     handle this for us. We'll create a Middleman app, clear out its predefined
-    index.html.erb file, and serve up the app.
+    index.html.erb file, include Vega Prime and JQuery, and serve up the app.
   </p>
   <pre>
-<code class="language-bash">$ middleman init video-chat
-$ cd video-chat
+<code class="language-bash">$ middleman init video-chat && cd video-chat
 $ echo "" > source/index.html.erb
+$ wget https://raw.githubusercontent.com/vega-webrtc/vega-prime/master/vega-prime.bundle.js -O source/javascripts/vega-prime.bundle.js
+$ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source/javascripts/jquery.min.js
 $ middleman server -p 4500</code>
   </pre>
+
+  <p>Now include the Vega Prime bundle and JQuery in your javascript source code with <code>wget</code>.</p>
 
   <p>
     Surf over to <code>localhost:4500</code> in your browser and you should see a blank, gray screen.
   </p>
 
-  <p>Now include the Vega Prime bundle and JQuery in your javascript source code with <code>wget</code>.</p>
-
-  <pre>
-<code class="language-bash">$ wget https://raw.githubusercontent.com/vega-webrtc/vega-prime/master/vega-prime.bundle.js -O source/javascripts/vega-prime.bundle.js
-$ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source/javascripts/jquery.min.js</code>
-  </pre>
-
   <p>
     Now, let's display your computer's video camera in the browser!
   </p>
 
-  <h2>Step 3: Show your local video</h2>
+  <h2>Step 3: Display your camera</h2>
 
   <p>Let's setup our index.html.erb file to have a video tag for our camera.</p>
 
@@ -105,11 +101,11 @@ $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source
   <p>We'll Vega Prime to get our video in that video tag.</p>
 
   <pre>
-<code class="language-markup">&#60;!-- source/index.html.erb --&#62;
+<code class="old-code">&#60;!-- source/index.html.erb --&#62;
 
-&#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
+&#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;</code>
 
-&#60;script&#62;
+<code class="language-markup">&#60;script&#62;
   new VegaPrime({
     url: 'ws://localhost:9292', 
     badge: {},
@@ -125,7 +121,7 @@ $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source
     yourself in the browser!
   </p>
 
-  <h2>Step 4: Handle your peers</h2>
+  <h2>Step 4: Display and remove your peers</h2>
   <p>
     Let's display peers when they arrive, and remove them when they go away.
   </p>
@@ -135,11 +131,11 @@ $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source
   </p>
 
   <pre>
-<code class="language-markup">&#60;!-- source/index.html.erb --&#62;
+<code class="old-code">&#60;!-- source/index.html.erb --&#62;</code>
 
-&#60;div id="peers"&#62;&#60;/div&#62;
+<code class="language-markup">&#60;div id="peers"&#62;&#60;/div&#62;</code>
 
-&#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
+<code class="old-code">&#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
 
 &#60;script&#62;
   new VegaPrime({
@@ -157,7 +153,7 @@ $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source
   </p>
 
   <pre>
-<code class="language-markup">&#60;!-- source/index.html.erb --&#62;
+<code class="old-code">&#60;!-- source/index.html.erb --&#62;
 
 &#60;div id="peers"&#62;&#60;/div&#62;
 
@@ -170,14 +166,14 @@ $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source
     roomId: '/fun',
   }).onLocalStreamReceived(function(wrappedStream){
     $('video#me').attr('src', wrappedStream.url);
-  }).onStreamAdded(function(peer){
+  }).</code><code class="language-javascript">onStreamAdded(function(peer){
     $video = $('&#60;video autoplay style="width: 50%;"&#62');
     $video.attr('src', peer.streamUrl);
     $video.attr('data-peer-id', peer.peerId);
 
     $('#peers').append($video)
-  })
-&#60;/script&#62;</code>
+  })</code>
+<code class="old-code">&#60;/script&#62;</code>
   </pre>
 
   <p>
@@ -192,7 +188,7 @@ $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source
   <p>There's one more thing we have to do. We have to remove our peers when they go away.</p>
 
   <pre>
-<code class="language-markup">&#60;!-- source/index.html.erb --&#62;
+<code class="old-code">&#60;!-- source/index.html.erb --&#62;
 
 &#60;div id="peers"&#62;&#60;/div&#62;
 
@@ -211,10 +207,10 @@ $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source
     $video.attr('data-peer-id', peer.peerId);
 
     $('#peers').append($video)
-  }).onPeerRemoved(function(peer){
+  })</code><code class="language-javascript">.onPeerRemoved(function(peer){
     $('video[data-peer-id="' + peer.peerId + '"]').remove()
-  })
-&#60;/script&#62;</code>
+  })</code>
+<code class="old-code">&#60;/script&#62;</code>
   </pre>
 
   <p>
