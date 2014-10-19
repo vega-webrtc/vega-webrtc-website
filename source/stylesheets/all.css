@@ -581,7 +581,8 @@ article.type-system-sans {
     font-family: "Open Sans", sans-serif;
     font-style: italic; }
   article.type-system-sans pre[class*="language-"] {
-    padding: 1.25em 1em 0; }
+    padding: 1.25em 1em 0;
+    margin-bottom: 1.5em; }
   article.type-system-sans code.old-code {
     color: silver; }
 

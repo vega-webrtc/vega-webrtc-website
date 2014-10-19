@@ -109,10 +109,10 @@ $ middleman server -p 4500</code>
   new VegaPrime({
     url: 'ws://localhost:9292', 
     badge: {},
-    roomId: '/fun',
+    roomId: '/fun'
   }).onLocalStreamReceived(function(wrappedStream){
     $('video#me').attr('src', wrappedStream.url);
-  })
+  });
 &#60;/script&#62;</code>
   </pre>
 
@@ -141,10 +141,10 @@ $ middleman server -p 4500</code>
   new VegaPrime({
     url: 'ws://localhost:9292', 
     badge: {},
-    roomId: '/fun',
+    roomId: '/fun'
   }).onLocalStreamReceived(function(wrappedStream){
     $('video#me').attr('src', wrappedStream.url);
-  })
+  });
 &#60;/script&#62;</code>
   </pre>
 
@@ -163,16 +163,16 @@ $ middleman server -p 4500</code>
   new VegaPrime({
     url: 'ws://localhost:9292', 
     badge: {},
-    roomId: '/fun',
+    roomId: '/fun'
   }).onLocalStreamReceived(function(wrappedStream){
     $('video#me').attr('src', wrappedStream.url);
-  }).</code><code class="language-javascript">onStreamAdded(function(peer){
+  })</code><code class="language-javascript">.onStreamAdded(function(peer){
     $video = $('&#60;video autoplay style="width: 50%;"&#62');
     $video.attr('src', peer.streamUrl);
     $video.attr('data-peer-id', peer.peerId);
 
-    $('#peers').append($video)
-  })</code>
+    $('#peers').append($video);
+  });</code>
 <code class="old-code">&#60;/script&#62;</code>
   </pre>
 
@@ -198,7 +198,7 @@ $ middleman server -p 4500</code>
   new VegaPrime({
     url: 'ws://localhost:9292', 
     badge: {},
-    roomId: '/fun',
+    roomId: '/fun'
   }).onLocalStreamReceived(function(wrappedStream){
     $('video#me').attr('src', wrappedStream.url);
   }).onStreamAdded(function(peer){
@@ -206,10 +206,10 @@ $ middleman server -p 4500</code>
     $video.attr('src', peer.streamUrl);
     $video.attr('data-peer-id', peer.peerId);
 
-    $('#peers').append($video)
+    $('#peers').append($video);
   })</code><code class="language-javascript">.onPeerRemoved(function(peer){
-    $('video[data-peer-id="' + peer.peerId + '"]').remove()
-  })</code>
+    $('video[data-peer-id="' + peer.peerId + '"]').remove();
+  });</code>
 <code class="old-code">&#60;/script&#62;</code>
   </pre>
 
