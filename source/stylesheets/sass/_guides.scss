@@ -1,5 +1,6 @@
 div.guides-accordion {
   @include span-columns(3);
+  padding: 2em;
 }
 
 div.guide-wrapper {

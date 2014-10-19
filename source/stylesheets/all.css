@@ -361,7 +361,8 @@ div.guides-accordion {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 23.23176%; }
+  width: 23.23176%;
+  padding: 2em; }
   div.guides-accordion:last-child {
     margin-right: 0; }
 
