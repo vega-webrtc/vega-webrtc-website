@@ -580,5 +580,7 @@ article.type-system-sans {
   article.type-system-sans p.author {
     font-family: "Open Sans", sans-serif;
     font-style: italic; }
+  article.type-system-sans pre[class*="language-"] {
+    padding: 1.25em 1em 0; }
 
 /*# sourceMappingURL=all.css.map */

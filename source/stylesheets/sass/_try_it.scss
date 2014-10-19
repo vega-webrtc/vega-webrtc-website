@@ -100,4 +100,8 @@ article.type-system-sans {
     font-family: $sans-serif;
     font-style: italic;
   }
+
+  pre[class*="language-"] {
+    padding: 1.25em 1em 0;
+  }
 }

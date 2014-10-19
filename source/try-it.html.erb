@@ -14,7 +14,7 @@
       <li><a href="http://bundler.io/">Bundler</a></li>
       <li><a href="http://middlemanapp.com/">Middleman</a></li>
       <li>Internet connectivity</li>
-      <li>WebRTC compliant browser (Chrome or Firefox)</li>
+      <li><a href="http://www.webrtc.org/">WebRTC</a> compliant browser (Chrome, Firefox, or Opera)</li>
     </ul>
   </p>
 
@@ -31,17 +31,15 @@
   <hr>
   <h2>Step 1: Start a Vega Server</h2>
   <p>
-    We need a Vega Server to handle some initial communication between peers.
+    We need a Vega Server to handle initial communication between peers.
   </p>
   <ol>
     <li>
-      <p>First clone the vega server example repo:</p>
+      <p>First clone the vega server example repo from the terminal:</p>
 
       <p>
         <pre>
-          <code class="language-bash">
-$ git clone git@github.com:vega-webrtc/vega_server_ruby_example.git && cd vega_server_ruby_example
-          </code>
+<code class="language-bash">$ git clone git@github.com:vega-webrtc/vega_server_ruby_example.git && cd vega_server_ruby_example</code>
         </pre>
       </p>
     </li>
@@ -63,51 +61,48 @@ $ git clone git@github.com:vega-webrtc/vega_server_ruby_example.git && cd vega_s
     </li>
   </ol>
 
-  <p>
-    Now we can move to the browser. Let's get the user media and display it if
-    the user allows their stream to be shared.
-  </p>
-
   <h2>Step 2: Initiate a Middleman app</h2>
   <p>
-    We need a local server to serve our video application. We'll init a
-    Middleman app, clear out the predefined index.html.erb file, and serve up
-    the app.
+    We need a local server to serve our video application. Middleman will
+    handle this for us. We'll create a Middleman app, clear out its predefined
+    index.html.erb file, and serve up the app.
   </p>
   <pre>
-    <code class="language-bash">
-$ middleman init video-chat
+<code class="language-bash">$ middleman init video-chat
 $ cd video-chat
 $ echo "" > source/index.html.erb
-$ middleman server -p 4500
-    </code>
+$ middleman server -p 4500</code>
   </pre>
 
   <p>
     Surf over to <code>localhost:4500</code> in your browser and you should see a blank, gray screen.
   </p>
 
-  <p>Now include the Vega Prime bundle and JQueryin your javascript source code with <code>wget</code>.</p>
+  <p>Now include the Vega Prime bundle and JQuery in your javascript source code with <code>wget</code>.</p>
 
   <pre>
 <code class="language-bash">$ wget https://raw.githubusercontent.com/vega-webrtc/vega-prime/master/vega-prime.bundle.js -O source/javascripts/vega-prime.bundle.js
 $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source/javascripts/jquery.min.js</code>
   </pre>
 
+  <p>
+    Now, let's display your computer's video camera in the browser!
+  </p>
+
   <h2>Step 3: Show your local video</h2>
 
   <p>Let's setup our index.html.erb file to have a video tag for our camera.</p>
 
   <pre>
-<code class="language-markup"># source/index.html.erb
+<code class="language-markup">&#60;!-- source/index.html.erb --&#62;
 
 &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;</code>
   </pre>
 
-  <p>Finally, let's use Vega Prime to get our video in there.</p>
+  <p>We'll Vega Prime to get our video in that video tag.</p>
 
   <pre>
-<code class="language-markup"># source/index.html.erb
+<code class="language-markup">&#60;!-- source/index.html.erb --&#62;
 
 &#60;video id="me" muted autoplay style="width: 25%;"&#62;&#60;/video&#62;
 
@@ -123,21 +118,21 @@ $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source
   </pre>
 
   <p>
-    Then allow the browser to access your camera and microphone, and you should
-    see yourself pointed right back at ya!
+    Allow the browser to access your camera and microphone, and you should see
+    yourself in the browser!
   </p>
 
   <h2>Step 4: Handle your peers</h2>
   <p>
-    Now we need to display peers when they arrive, and remove them when they go away.
+    Let's display peers when they arrive, and remove them when they go away.
   </p>
 
   <p>
-    First, let's create a little space for our friends to go.
+    First, create a little space for our peers to go.
   </p>
 
   <pre>
-<code class="language-markup"># source/index.html.erb
+<code class="language-markup">&#60;!-- source/index.html.erb --&#62;
 
 &#60;div id="peers"&#62;&#60;/div&#62;
 
@@ -155,11 +150,11 @@ $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source
   </pre>
 
   <p>
-    Now, let's add our friends to the page when Vega Prime detects them.
+    Now, let's add our peers to the page when Vega Prime detects them.
   </p>
 
   <pre>
-<code class="language-markup"># source/index.html.erb
+<code class="language-markup">&#60;!-- source/index.html.erb --&#62;
 
 &#60;div id="peers"&#62;&#60;/div&#62;
 
@@ -183,17 +178,18 @@ $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source
   </pre>
 
   <p>
-    Now refresh your browser. Then open up localhost:4500 in another tab. In both tabs, you should see a bigger
+    Refresh your tab with <code>localhost:4500</code>. Then open up
+    localhost:4500 in another tab. In both tabs, you should see a bigger
     version of yourself above yourself. That's you, but <em>through a
-    peer-to-peer connection</em> going <em>through the internet</em>! Pretty
-    cool, huh? Go ahead, open up localhost:4500 in yet another tab. AHH another big version of you.
-    Multiple peer connections for free. WEEEEEE!
+    peer-to-peer connection</em>! Pretty cool, huh? Go ahead, open up
+    localhost:4500 in yet another tab. Now there should be two big version of
+    you. Vega does multiple peer connections for free!
   </p>
 
-  <p>There's one more thing we have to do. We have to remove our friends when they go away. (<em>single tear</em>)</p>
+  <p>There's one more thing we have to do. We have to remove our peers when they go away.</p>
 
   <pre>
-<code class="language-markup"># source/index.html.erb
+<code class="language-markup">&#60;!-- source/index.html.erb --&#62;
 
 &#60;div id="peers"&#62;&#60;/div&#62;
 
@@ -219,8 +215,9 @@ $ wget http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js -O source
   </pre>
 
   <p>
-    Now if you open up the middleman app in multiple tabs, and you close out one,
-    you should see only as many versions of you as there are middleman tabs going.
+    Now if you open up <code>localhost:4500</code> in multiple tabs, and you
+    close some, you should see only as many versions of you as there are
+    tabs on <code>localhost:4500</code>.
   </p>
 
   <h2>Step 5: Profit?</h2>
