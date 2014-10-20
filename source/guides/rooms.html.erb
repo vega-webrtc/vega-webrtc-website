@@ -17,7 +17,7 @@
 <code class="language-javascript">// Bob's Vega Prime instance
 
 new VegaPrime({
-  url: 'wss://my-secure-vega-server',
+  url: 'wss://my-secure-vega-server.com',
   roomId: 'abc123',
   badge: {}
 });
@@ -29,4 +29,11 @@ new VegaPrime({
   JavaScript must instantiate VegaPrime with a <code>roomId</code> of 'abc123'.
 </p>
 
-<h1>Strategies</h1>
+<h1 id="room-patterns">Patterns</h1>
+
+<h2>
+  Next, there are a few patterns that could help you think of how to get peers
+  in the same room.
+</h2>
+
+<h3 id="party-pattern">It's a party and everyone's invited!</h3>
