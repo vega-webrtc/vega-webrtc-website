@@ -37,3 +37,25 @@ new VegaPrime({
 </h2>
 
 <h3 id="party-pattern">It's a party and everyone's invited!</h3>
+
+<p>
+  If you want every user to talk to each other, just give everybody the same
+  room id. A good example of this is over at the 
+  <a href="/try-it.html">demo page</a>.
+</p>
+
+<p>Take Bob's Vega Prime instance, for example.</p>
+
+<pre>
+<code class="language-javascript">new VegaPrime({
+  url: 'wss://my-secure-vega-server.com',
+  roomId: 'abc123',
+  badge: {}
+});
+</code>
+</pre>
+
+<p>
+  That room id of abc123 is hardcoded. If every user hits a page with that
+  script, everyone ends up in the room. Pretty simple.
+</p>
